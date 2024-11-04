@@ -2,7 +2,6 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
-import AccountSection from "./AccountSection";
 import AppLogo from "./AppLogo";
 import NavMenu, { MenusData } from "./NavMenu";
 import { twMerge } from "tailwind-merge";
@@ -58,7 +57,6 @@ const NavBar = ({ className }: NavBarProps) => {
         onMenuClick={onMenuClick}
       />
       <Divider className="grow-0 h-[70%] my-auto ml-3 mr-5" direction="vertical" />
-      <AccountSection />
     </div>
   );
 };
