@@ -18,7 +18,7 @@ const QuartoItem = ({ quarto, ...props }: QuartoItemProps) => {
                 <p className="text-xl">Nº {quarto?.numero}</p>
                 <p className="text-sm">{quarto?.lotacao} pessoas</p>
             </div>
-            <p>{quarto?.tipo}</p>
+            <p>{quarto?.tipo?.replaceAll?.("_", " ")}</p>
             <Divider direction="vertical" className="w-3 h-full grow-0 ml-auto" />
             <p className="mr-3 text-lg">{quarto?.preco?.toLocaleString("pt-BR", {
                 style: "currency",

@@ -12,7 +12,7 @@ import { Skeleton } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 import { Moment } from "moment";
 import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import ConfimationModal from "./ConfirmationModal";
 import QuartoItem from "./QuartoItem";
 
@@ -76,9 +76,11 @@ const CreateReservationPage = () => {
         [clientesList, selectedQuarto, adicionarReserva, feedback]
       );
 
+    const filteredQuartosList = useMemo(() => quartosDisponiveis?.sort((a, b) => a.numero - b.numero)?.map((quarto, i) => <QuartoItem key={i} quarto={quarto} onClick={() => setSelectedQuarto(quarto)} />), [quartosDisponiveis]);
+
     return (
         <div className="w-full grow flex flex-col justify-center items-center">
-            <Card className="relative flex flex-col h-[400px]">
+            <Card className="relative flex flex-col h-[70vh]">
                 <div className="w-[800px] flex flex-col items-start">
                     <p className="text-lg">Quartos disponíveis</p>
                 </div>
@@ -91,7 +93,7 @@ const CreateReservationPage = () => {
                             <Skeleton className="h-[70px]" />
                         </>
                     ) : (
-                        quartosDisponiveis?.map((quarto, i) => <QuartoItem key={i} quarto={quarto} onClick={() => setSelectedQuarto(quarto)} />)
+                        filteredQuartosList
                     )}
 
                     {quartosDisponiveis?.length === 0 && <div className="grow select-none">Nenhum quarto disponível</div>}
