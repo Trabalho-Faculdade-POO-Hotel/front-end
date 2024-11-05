@@ -12,7 +12,7 @@ const NotFoundPage = () => {
       <p>
         <TbWorldQuestion className={"text-primary"} size="100px" />
       </p>
-      <p className="font-bold text-6xl text-secondary">404</p>
+      <p className="font-bold text-6xl text-primary">404</p>
       <p className="text-2xl">Ops, ocorreu um erro.</p>
       <p>Esta página não existe ou não pôde ser encontrada.</p>
       <Button onClick={router.back}>Voltar para a página anterior</Button>

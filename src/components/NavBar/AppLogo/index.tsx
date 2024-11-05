@@ -1,10 +1,9 @@
 'use client';
 
-import Link from "next/link";
-import AppIcon from "../../AppIcon";
 import { Roboto } from "next/font/google";
+import Link from "next/link";
 import { twMerge } from "tailwind-merge";
-import { useAuthData } from "@/providers/AuthProvider";
+import AppIcon from "../../AppIcon";
 
 const roboto = Roboto({
   weight: "900",
@@ -12,10 +11,8 @@ const roboto = Roboto({
 });
 
 const AppLogo = () => {
-  const authData = useAuthData();
-
   return (
-    <Link className="flex h-full items-center gap-3" href={"/student/dashboard"}>
+    <Link className="flex h-full items-center gap-3" href={"/reservations"}>
       <AppIcon className="w-14 h-14 my-auto ml-2" />
       <p
         className={twMerge(

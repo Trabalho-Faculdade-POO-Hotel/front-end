@@ -1,15 +1,14 @@
 import React, { MutableRefObject, RefObject } from "react";
-import { FaChalkboardTeacher, FaUserAstronaut } from "react-icons/fa";
+import { FaChalkboardTeacher, FaUser, FaUserAstronaut, FaUserInjured } from "react-icons/fa";
 import { PiStudentFill } from "react-icons/pi";
 import { twMerge } from "tailwind-merge";
 
 interface UserIconProps extends React.ComponentProps<"div"> {
   className?: string;
-  role?: "aluno" | "professor";
 }
 const UserIcon = React.forwardRef<HTMLDivElement, UserIconProps>(
   function UserIcon(
-    { role = "aluno", className, ...props }: UserIconProps,
+    { className, ...props }: UserIconProps,
     ref
   ) {
     return (
@@ -21,12 +20,7 @@ const UserIcon = React.forwardRef<HTMLDivElement, UserIconProps>(
         )}
         {...props}
       >
-        {role === "aluno" && (
-          <PiStudentFill className="text-white w-[40%] h-[40%]" />
-        )}
-        {role === "professor" && (
-          <FaChalkboardTeacher className="text-white w-[40%] h-[40%]" />
-        )}
+        <FaUser className="text-white w-[40%] h-[40%]" />
       </div>
     );
   }

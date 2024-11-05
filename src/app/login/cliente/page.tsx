@@ -87,7 +87,7 @@ const LoginPage = () => {
       const accessToken = authorization.getAccessToken();
 
       if (accessToken) {
-        router.push("/about");
+        router.push("/reservations");
       }
     });
   }, [feedback, router]);

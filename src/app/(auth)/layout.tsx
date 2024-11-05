@@ -10,7 +10,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       <div className="flex flex-col h-full w-full overflow-hidden">
         <NavBar className="shrink-0" />
         {children}
-        <img src={BeachBackground.src} className="fixed top-0 left-0 w-full h-full object-cover z-[-1]" alt="praia" />
+        <img className="fixed top-0 left-0 w-full h-full object-cover z-[-1] brightness-75" src={BeachBackground.src} alt="praia" />
       </div>
     </AuthProvider>
   );

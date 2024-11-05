@@ -6,6 +6,8 @@ import AppLogo from "./AppLogo";
 import NavMenu, { MenusData } from "./NavMenu";
 import { twMerge } from "tailwind-merge";
 import Divider from "../Divider";
+import UserIcon from "../UserIcon";
+import { useTooltip } from "@/providers/TooltipProvider";
 
 interface NavBarProps {
   className?: string;
@@ -17,16 +19,8 @@ const NavBar = ({ className }: NavBarProps) => {
   const availableMenus: MenusData = useMemo(() => {
     return [
       {
-        label: "dashboard",
-        route: "/student/dashboard",
-      },
-      {
-        label: "meus cursos",
-        route: "/student/courses",
-      },
-      {
-        label: "meus pagamentos",
-        route: "/student/payments",
+        label: "reservas",
+        route: "/reservations",
       },
       {
         label: "sobre nós",
@@ -42,6 +36,10 @@ const NavBar = ({ className }: NavBarProps) => {
     [router]
   );
 
+  const goToUserPage = useCallback(() => {
+    router.push("/user");
+  }, [router]);
+
   return (
     <div
       className={twMerge(
@@ -56,7 +54,8 @@ const NavBar = ({ className }: NavBarProps) => {
         menusData={availableMenus}
         onMenuClick={onMenuClick}
       />
-      <Divider className="grow-0 h-[70%] my-auto ml-3 mr-5" direction="vertical" />
+      <Divider className="grow-0 h-[70%] my-auto ml-5 mr-10" direction="vertical" />
+      <UserIcon className="grow-0 my-auto mx-0 cursor-pointer hover:scale-105 duration-200" onClick={goToUserPage} {...useTooltip("Usuario")} />
     </div>
   );
 };

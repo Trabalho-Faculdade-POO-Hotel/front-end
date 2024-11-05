@@ -37,7 +37,7 @@ const NavMenu = ({
     () =>
       menusData.map((menuData, i) => (
         <div
-          className="group h-full capitalize flex justify-center items-center px-3 select-none cursor-pointer"
+          className="group h-full capitalize flex justify-center items-center px-3 select-none cursor-pointer hover:scale-[120%] duration-200"
           key={i}
           onClick={() => onMenuClick && onMenuClick(menuData)}
         >
@@ -46,7 +46,7 @@ const NavMenu = ({
               currentRoute,
               menuData.route
             )}
-            className="relative after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-primary after:rounded-full group-hover:after:w-11/12 after:duration-100 data-[iscurrentroute=true]:after:w-11/12 data-[iscurrentroute=true]:after:bg-primary"
+            className="relative after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-transparent after:rounded-full group-hover:after:w-11/12 after:duration-100 data-[iscurrentroute=true]:after:w-11/12 data-[iscurrentroute=true]:after:bg-primary"
           >
             {menuData.label}
           </p>
