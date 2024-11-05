@@ -10,7 +10,7 @@ import { Skeleton } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 import ReservaItem from "./ReservaItem";
-import CheckoutConfirmationModal from "./CheckOutConfirmationModal";
+import CheckoutConfirmationModal from "./CheckoutConfirmationModal";
 import { Reserva } from "@/services/reserva/types";
 import { useMutation } from "@tanstack/react-query";
 import apiReserva from "@/services/reserva/apiReserva";
