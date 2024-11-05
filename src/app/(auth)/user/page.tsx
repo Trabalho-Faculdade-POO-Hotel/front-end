@@ -108,7 +108,7 @@ const UserPage = () => {
         <div className="flex flex-col w-full h-full justify-center items-center">
             <Card>
                 <div className="flex flex-col gap-5 w-[40vw]">
-                    <p className="text-xl text-black text-opacity-60 mb-10">Atualizar Dados da Conta</p>
+                    <p className="text-xl text-black text-opacity-60 mb-10 select-none">Atualizar Dados da Conta</p>
                     <UserIcon className="w-20 h-20" />
                     <form
                         className="my-auto gap-5 flex flex-col w-[90%] mx-auto grow pb-10"
@@ -212,7 +212,7 @@ const UserPage = () => {
                             <Skeleton className="h-20" /> 
                             : 
                             <div className="flex gap-6">
-                                <Button className="grow bg-red-500 hover:bg-red-600" type="button" loading={isAtualizarClienteLoading} onClick={logoutUser}>
+                                <Button className="grow bg-red-500 hover:bg-red-600" type="button" onClick={logoutUser}>
                                     Sair
                                 </Button>
                                 <Button className="grow" type="submit" loading={isAtualizarClienteLoading}>
