@@ -44,6 +44,8 @@ const LoginPage = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const { data: clientesList } = useQueryListClientes();
+
   const onSubmitHandler = useCallback(
     (formData: FormSchemaType) => {
       authorization.saveAccessToken(formData.clienteEmail);
@@ -55,7 +57,7 @@ const LoginPage = () => {
     },
     [feedback]
   );
-
+  
   useEffect(() => {
     authorization.setOnNetworkError(() => {
       feedback({
@@ -72,12 +74,6 @@ const LoginPage = () => {
       // }
     });
   }, [feedback, router]);
-
-  const { data: clientesList } = useQueryListClientes();
-
-  useEffect(() => {
-    console.log(clientesList);
-  }, [clientesList]);
 
   return (
     <div className="flex h-full w-full p-5">
