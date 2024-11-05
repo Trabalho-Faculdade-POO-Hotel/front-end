@@ -98,6 +98,12 @@ const UserPage = () => {
         }
     }, [atualizarCliente, thisUserData?.clienteId]);
 
+    const logoutUser = useCallback(() => {
+        authorization.clearAuthData();
+
+        window.location.reload();
+    }, []);
+
     return (
         <div className="flex flex-col w-full h-full justify-center items-center">
             <Card>
@@ -205,9 +211,14 @@ const UserPage = () => {
                             ? 
                             <Skeleton className="h-20" /> 
                             : 
-                            <Button type="submit" loading={isAtualizarClienteLoading}>
-                                Atualizar
-                            </Button>
+                            <div className="flex gap-6">
+                                <Button className="grow bg-red-500 hover:bg-red-600" type="button" loading={isAtualizarClienteLoading} onClick={logoutUser}>
+                                    Sair
+                                </Button>
+                                <Button className="grow" type="submit" loading={isAtualizarClienteLoading}>
+                                    Atualizar
+                                </Button>
+                            </div>
                         }
                     </form>
                 </div>
