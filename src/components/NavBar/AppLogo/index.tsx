@@ -19,11 +19,11 @@ const AppLogo = () => {
       <AppIcon className="w-14 h-14 my-auto ml-2" />
       <p
         className={twMerge(
-          "text-[#dd0b4a] font-extrabold text-xl select-none uppercase",
+          "text-blue-500 font-extrabold text-xl select-none uppercase",
           roboto.className
         )}
       >
-        Global
+        Hotel
       </p>
       <p
         className={twMerge(
@@ -31,7 +31,7 @@ const AppLogo = () => {
           roboto.className
         )}
       >
-        Speaking
+        Azul Marinho
       </p>
     </Link>
   );

@@ -1,7 +1,7 @@
 import { api } from "@/core";
 import { AdicionarClienteProps, ListClientesResponse } from "./types";
 
-const listClientes = async () => await api.get<ListClientesResponse>("/hotel/cliente/listar");
+const listClientes = async () => (await api.get<ListClientesResponse>("/hotel/cliente/listar"))?.data;
 
 const adicionarCliente = async ({ cliente }: AdicionarClienteProps) => await api.post("/hotel/cliente/adicionar", cliente);
 

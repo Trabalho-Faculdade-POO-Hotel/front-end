@@ -45,7 +45,7 @@ const NavBar = ({ className }: NavBarProps) => {
   return (
     <div
       className={twMerge(
-        "flex bg-white h-20 w-full shadow-sm border-b sticky top-0 px-16 z-50",
+        "flex bg-white bg-opacity-90 backdrop-blur-md h-20 w-auto rounded-md shadow-sm border-b sticky top-0 px-16 z-50 m-1 box-border",
         className
       )}
     >

@@ -46,7 +46,7 @@ const NavMenu = ({
               currentRoute,
               menuData.route
             )}
-            className="relative after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-primary after:rounded-full group-hover:after:w-11/12 after:duration-100 data-[iscurrentroute=true]:after:w-11/12 data-[iscurrentroute=true]:after:bg-secondary"
+            className="relative after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-1 after:bg-primary after:rounded-full group-hover:after:w-11/12 after:duration-100 data-[iscurrentroute=true]:after:w-11/12 data-[iscurrentroute=true]:after:bg-primary"
           >
             {menuData.label}
           </p>

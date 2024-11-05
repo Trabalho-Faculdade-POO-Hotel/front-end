@@ -4,14 +4,14 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import Button from "@/components/Button";
 import { authorization } from "@/core";
 import { useFeedback } from "@/providers/FeedbackProvider";
+import { useQueryListClientes } from "@/services/hotel";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ZodIssueCode, z } from "zod";
 import AppIcon from "../../../components/AppIcon";
-import { useQueryListClientes } from "@/services/hotel";
 
 const loginFormSchema = z
   .object({
@@ -42,20 +42,37 @@ const LoginPage = () => {
     },
   });
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const { data: clientesList } = useQueryListClientes();
+  const { data: clientesList, isLoading } = useQueryListClientes();
 
   const onSubmitHandler = useCallback(
-    (formData: FormSchemaType) => {
-      authorization.saveAccessToken(formData.clienteEmail);
+    async (formData: FormSchemaType) => {
+      if (!clientesList) {
+        feedback({
+          message: "Erro ao buscar clientes, tente novamente...",
+          type: "error",
+        });
 
+        return;
+      }
+
+      if (!clientesList.some((cliente) => cliente.email === formData.clienteEmail)) {
+        feedback({
+          message: "E-mail não encontrado, se cadastre para poder prosseguir",
+          type: "error",
+        });
+
+        router.push("/cadastro/cliente");
+
+        return;
+      }
+
+      authorization.saveAccessToken(formData.clienteEmail);
       feedback({
         message: "Seja bem-vindo !",
         type: "success",
       });
     },
-    [feedback]
+    [clientesList, feedback, router]
   );
   
   useEffect(() => {
@@ -69,9 +86,9 @@ const LoginPage = () => {
     authorization.setOnUpdateAccessToken(() => {
       const accessToken = authorization.getAccessToken();
 
-      // if (accessToken) {
-      //   router.push("/student/dashboard");
-      // }
+      if (accessToken) {
+        router.push("/about");
+      }
     });
   }, [feedback, router]);
 
